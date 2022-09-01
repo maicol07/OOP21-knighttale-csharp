@@ -1,6 +1,6 @@
 ﻿# A Knight's Tale - C#
 
-Porting in C# del progetto Java ([REPO](https://github.com/maicol07/OOP21-knighttale))
+Porting parziale in C# del progetto Java ([REPO](https://github.com/maicol07/OOP21-knighttale))
 
 ---
 
