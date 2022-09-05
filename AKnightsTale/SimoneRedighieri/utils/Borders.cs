@@ -1,4 +1,4 @@
-﻿namespace AKnightsTale.SimoneRedighieri
+﻿namespace AKnightsTale.SimoneRedighieri.utils
 {
     /// <summary>
     ///     Class that represents the borders of entities
@@ -28,26 +28,26 @@
         ///     Gets the x coordinate of the point of entity
         /// </summary>
         /// <returns>   The x coordinate </returns>
-        public double GetX() => this._point.X;
+        public double GetX() => _point.X;
         /// <summary>
         ///     Gets the y coordinate of the point of entity
         /// </summary>
         /// <returns> The y coordinate </returns>
-        public double GetY() => this._point.Y;
+        public double GetY() => _point.Y;
         /// <summary>
         ///     Checks if this Borders intersects the area of a specified Borders
         /// </summary>
         /// <param name="b"> The specified Borders </param>
         /// <returns> True if this Borders and the area of the specified Borders intersect,false otherwise </returns>
         public bool Intersects(Borders b) => Intersects(b.GetX(), b.GetY(), b.Width, b.Height);
-        
+
         private bool Intersects(double x, double y, double w, double h)
         {
             if (w < 0 || h < 0)
             {
                 return false;
             }
-            return (x + w >= GetX() && y + h >= GetY() && x <= GetX() + Width && y <= GetY() + Height);
+            return x + w >= GetX() && y + h >= GetY() && x <= GetX() + Width && y <= GetY() + Height;
         }
     }
 }

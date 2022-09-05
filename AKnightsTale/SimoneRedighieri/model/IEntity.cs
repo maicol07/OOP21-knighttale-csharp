@@ -1,4 +1,6 @@
-﻿namespace AKnightsTale.SimoneRedighieri
+﻿using AKnightsTale.SimoneRedighieri.utils;
+
+namespace AKnightsTale.SimoneRedighieri.model
 {
     public interface IEntity
     {

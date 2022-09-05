@@ -1,4 +1,4 @@
-﻿namespace AKnightsTale.SimoneRedighieri
+﻿namespace AKnightsTale.SimoneRedighieri.utils
 {
     /// <summary>
     ///     A generic point 2D

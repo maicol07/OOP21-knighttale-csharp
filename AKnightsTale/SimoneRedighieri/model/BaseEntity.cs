@@ -1,4 +1,6 @@
-﻿namespace AKnightsTale.SimoneRedighieri
+﻿using AKnightsTale.SimoneRedighieri.utils;
+
+namespace AKnightsTale.SimoneRedighieri.model
 {
     /// <summary>
     ///     A class for a base entity
@@ -6,7 +8,7 @@
     public class BaseEntity : IEntity
     {
         /// <inheritdoc/>
-        public Borders Borders { get; private set;  }
+        public Borders Borders { get; private set; }
 
         /// <inheritdoc/>
         public EntityType Type { get; }
@@ -22,8 +24,8 @@
         }
 
         /// <inheritdoc/>
-        public Point<double> GetPosition() => new(this.Borders.GetX(), this.Borders.GetY());
+        public Point<double> GetPosition() => new(Borders.GetX(), Borders.GetY());
         /// <inheritdoc/>
-        public void SetPosition(Point<double> p) => this.Borders = new Borders(p.X, p.Y, this.Borders.Width, this.Borders.Height);
+        public void SetPosition(Point<double> p) => Borders = new Borders(p.X, p.Y, Borders.Width, Borders.Height);
     }
 }
