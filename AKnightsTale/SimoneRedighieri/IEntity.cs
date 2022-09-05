@@ -31,6 +31,6 @@
         ///     Checks if the entity can have collisions
         /// </summary>
         /// <returns> true if entity can have collisions, false otherwise </returns>
-        bool IsCollidable();
+        bool IsCollidable { get; }
     }
 }
