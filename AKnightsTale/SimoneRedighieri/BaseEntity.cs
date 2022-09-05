@@ -11,19 +11,15 @@ namespace AKnightsTale.SimoneRedighieri
     /// </summary>
     public class BaseEntity : IEntity
     {
-        /// <summary>
-        ///     The borders of entity
-        /// </summary>
+        /// <inheritdoc/>
         public Borders Borders { get; private set;  }
-        /// <summary>
-        ///     The type of entity
-        /// </summary>
+        /// <inheritdoc/>
         public EntityType Type { get; }
 
         /// <summary>
         ///     Checks if Entity can have collisions or not
         /// </summary>
-        public readonly bool _isCollidable;
+        private readonly bool _isCollidable;
 
         public BaseEntity(Borders borders, EntityType type, bool isCollidable)
         {
@@ -39,7 +35,7 @@ namespace AKnightsTale.SimoneRedighieri
         {
             this.Borders = new Borders(p.X, p.Y, this.Borders.Width, this.Borders.Height);
         }
-
+        /// <inheritdoc/>
         bool IEntity.IsCollidable() => _isCollidable;
     }
 }
