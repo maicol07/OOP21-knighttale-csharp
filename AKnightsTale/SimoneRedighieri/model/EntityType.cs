@@ -1,4 +1,4 @@
-﻿namespace AKnightsTale.SimoneRedighieri
+﻿namespace AKnightsTale.SimoneRedighieri.model
 {
     /// <summary>
     ///     The possible types of entities

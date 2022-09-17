@@ -1,7 +1,10 @@
-﻿namespace AKnightsTale.SimoneRedighieri
+﻿using AKnightsTale.SimoneRedighieri.utils;
+
+namespace AKnightsTale.SimoneRedighieri.model
 {
     public interface IEntity
     {
+
         /// <summary>
         ///   Gets the entity position
         /// </summary>
@@ -18,18 +21,18 @@
         ///     Gets the entity borders
         /// </summary>
         /// <returns> The entity bounds </returns>
-        Borders GetBorders();
+        Borders Borders { get; }
 
         /// <summary>
         ///     Gets the entity type
         /// </summary>
         /// <returns> The entity type </returns>
-        EntityType GetType();
+        EntityType Type { get; }
 
         /// <summary>
         ///     Checks if the entity can have collisions
         /// </summary>
         /// <returns> true if entity can have collisions, false otherwise </returns>
-        bool IsCollidable();
+        bool IsCollidable { get; }
     }
 }
