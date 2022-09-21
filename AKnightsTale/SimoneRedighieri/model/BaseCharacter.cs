@@ -5,7 +5,7 @@ namespace AKnightsTale.SimoneRedighieri.model
     /// <summary>
     ///     Abstract class for characters (players, enemy)
     /// </summary>
-    public abstract class BaseCharacter : BaseEntity, ICharacter
+    public abstract class BaseCharacter : Entity, ICharacter
     {
         protected BaseCharacter(Borders borders, EntityType type, bool isCollidable, double speed,
             Direction direction, double health, double damage) : base(borders, type, isCollidable)

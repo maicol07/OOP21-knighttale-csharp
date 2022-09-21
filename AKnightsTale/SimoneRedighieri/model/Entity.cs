@@ -5,7 +5,7 @@ namespace AKnightsTale.SimoneRedighieri.model
     /// <summary>
     ///     A class for a base entity
     /// </summary>
-    public class BaseEntity : IEntity
+    public class Entity : IEntity
     {
         /// <inheritdoc/>
         public Borders Borders { get; private set; }
@@ -16,7 +16,7 @@ namespace AKnightsTale.SimoneRedighieri.model
         /// <inheritdoc/>
         public bool IsCollidable { get; }
 
-        public BaseEntity(Borders borders, EntityType type, bool isCollidable)
+        public Entity(Borders borders, EntityType type, bool isCollidable)
         {
             Borders = borders;
             Type = type;
