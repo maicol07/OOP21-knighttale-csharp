@@ -8,13 +8,14 @@ namespace AKnightsTale.SimoneRedighieri.model
     public abstract class BaseCharacter : Entity, ICharacter
     {
         protected BaseCharacter(Borders borders, EntityType type, bool isCollidable, double speed,
-            Direction direction, double health, double damage) : base(borders, type, isCollidable)
+            Direction direction, double health, double damage, double defense) : base(borders, type, isCollidable)
         {
             Speed = speed;
             Direction = direction;
             Health = health;
             MaxHealth = health;
             Damage = damage;
+            Defense = defense;
         }
 
         /// <inheritdoc/>
