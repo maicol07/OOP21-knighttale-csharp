@@ -15,7 +15,7 @@ namespace AKnightsTale.SimoneRedighieri.model
         private const double PlayerDefense = 25.0;
         private const double AttackRange = 5.0;
 
-        public Player(Point<double> p) : base(new (p.X, p.Y, PlayerWidth, PlayerHeight), EntityType.Player,
+        public Player(Point<double> p) : base(new Borders(p.X, p.Y, PlayerWidth, PlayerHeight), EntityType.Player,
             true, PlayerSpeed, Direction.Right, PlayerMaxHealth, PlayerDamage, PlayerDefense)
         {
         }
