@@ -14,6 +14,10 @@
         {
             var appDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
                 , "unibo", App.AppName, App.AppVersion);
+            
+            if (Environment.GetCommandLineArgs().Contains("headless")) {
+                appDir = Path.GetFullPath("build");
+            }
 
             return Path.Combine(pathsToAppend.Prepend(appDir).ToArray());
         }

@@ -2,7 +2,7 @@
 using AKnightsTale.MaicolBattistini.utils;
 using Newtonsoft.Json;
 
-namespace AKnightsTale.MaicolBattistini.Model
+namespace AKnightsTale.MaicolBattistini.Models
 {
     /// <inheritdoc cref="IScoreboard"/>
     public class Scoreboard: IScoreboard
@@ -29,22 +29,22 @@ namespace AKnightsTale.MaicolBattistini.Model
             _scores.TryAdd(name, score);
         }
 
+        /// <inheritdoc cref="IScoreboard.DeleteScore"/>
+        public void DeleteScore(string name)
+        {
+            _scores.Remove(name);
+        }
+
+        /// <inheritdoc cref="IScoreboard.Clear"/>
+        public void Clear()
+        {
+            _scores.Clear();
+        }
+
         /// <inheritdoc cref="IScoreboard.Load"/>
         public void Load()
         {
-            var path = AppPaths.GetFilePath(ScoreboardFileName);
-            if (!File.Exists(path))
-            {
-                try
-                {
-                    var directory = Directory.GetParent(path);
-                    directory?.Create();
-                    File.Create(path).Close();
-                } catch (IOException e)
-                {
-                    Console.WriteLine(e);
-                }
-            }
+            var path = GetScoreboardFilePath();
             
             string json;
             try
@@ -68,13 +68,48 @@ namespace AKnightsTale.MaicolBattistini.Model
         /// <inheritdoc cref="IScoreboard.Save"/>
         public void Save()
         {
+            var path = GetScoreboardFilePath();
             try
             {
-                File.WriteAllText(AppPaths.GetFilePath(ScoreboardFileName), JsonConvert.SerializeObject(_scores));
+                File.WriteAllText(path, JsonConvert.SerializeObject(_scores));
             } catch (IOException e)
             {
                 Console.WriteLine(e);
             }
+        }
+        
+        /// <summary>
+        /// Get the scoreboard file path. It createß the file if it doesn't exist
+        /// </summary>
+        /// <exception cref="IOException">Thrown when an I/O Error occurs while creating the file</exception>
+        /// <returns>The scoreboard file path</returns>
+        private static string GetScoreboardFilePath()
+        {
+            var path = AppPaths.GetFilePath(ScoreboardFileName);
+            if (File.Exists(path))
+            {
+                return path;
+            }
+            
+            try
+            {
+                var created = Directory.CreateDirectory(Directory.GetParent(path)?.FullName ?? string.Empty);
+                if (!created.Exists)
+                {
+                    throw new IOException("Error creating scoreboard file directory");
+                }
+
+                if (!File.Exists(path))
+                {
+                    File.Create(path).Close(); // close immediately
+                }
+            }
+            catch (IOException e)
+            {
+                Console.Error.WriteLine(e.ToString());
+            }
+
+            return path;
         }
     }
 }
