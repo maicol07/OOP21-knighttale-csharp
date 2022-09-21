@@ -8,7 +8,7 @@ namespace AKnightsTale.SimoneRedighieri.model
     public class Entity : IEntity
     {
         /// <inheritdoc/>
-        public Borders Borders { get; private set; }
+        public Borders Borders { get; set; }
 
         /// <inheritdoc/>
         public EntityType Type { get; }
