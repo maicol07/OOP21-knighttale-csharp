@@ -18,10 +18,10 @@ namespace AKnightsTale.SimoneRedighieri.model
         void SetPosition(Point<double> p);
 
         /// <summary>
-        ///     Gets the entity borders
+        ///     Gets and sets the entity borders
         /// </summary>
         /// <returns> The entity bounds </returns>
-        Borders Borders { get; }
+        Borders Borders { get; set; }
 
         /// <summary>
         ///     Gets the entity type

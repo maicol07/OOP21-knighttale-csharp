@@ -1,6 +1,6 @@
 ﻿using System.Collections.Immutable;
 
-namespace AKnightsTale.MaicolBattistini.Model
+namespace AKnightsTale.MaicolBattistini.Models
 {
  /// <summary>
  /// The scoreboard model
@@ -26,7 +26,17 @@ namespace AKnightsTale.MaicolBattistini.Model
  /// <param name="name">Name of the player</param>
  /// <param name="score">Score of the player</param>
   void SetScore(string name, int score);
+ 
+ /// <summary>
+ /// Delete an entry from the scoreboard.
+ /// </summary>
+ /// <param name="name">The name of the player to remove.</param>
+ void DeleteScore(string name);
 
+ /// <summary>
+ /// Clear the scoreboard by deleting all the entries.
+ /// </summary>
+ void Clear();
 
  /// <summary>
  /// Load scoreboard from JSON file
