@@ -3,57 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AKnightsTale.SimoneRedighieri.model;
+using AKnightsTale.SimoneRedighieri.utils;
 
 namespace AKnightsTale.Leonardo_Viola.Model
 {
     internal class Enemy : BaseCharacter
     {
 
-        private const double WIDTH_BOUNDS = 20.0;
-        private const double HEIGHT_BOUNDS = 24.0;
-        private const double DAMAGE = 50.0;
-        private const double MAX_HEALTH = 100.0;
-        private const double SPEED = 0.7;
-        private const double DEFENSE = 10.0;
-        private const double ATTACK_RANGE = 5.0;
-        private const int MIN_DISTANCE = 20;
+        private const double WidthBounds = 20.0;
+        private const double HeightBounds = 24.0;
+        private const double EnemyDamage = 50.0;
+        private const double EnemyMaxHealth = 100.0;
+        private const double EnemySpeed = 0.7;
+        private const double EnemyDefense = 10.0;
+        private const double AttackRange = 5.0;
+        private const int MinDistance = 20;
         /**
          * The Chasing range.
          */
-        static final double CHASING_RANGE = 100;
-        private Status status = Status.WALK;
+        private const double CHASING_RANGE = 100;
+        private Status status  = Status.WALK;
 
-        private const Random RANDOM = new Random();
-        private boolean checkAxisX = RANDOM.nextInt() % 2 == 0;
-
-        /**
-         * Instantiates a new Enemy.
-         *
-         * @param position the position
-         */
-        public Enemy(Point position)
+        private const Random rand = new Random();
+        private bool checkX = rand.NextInt64() % 2 == 0;
+        
+        public Enemy(Point<double> position) : base(new Borders(position.X, position.Y, WidthBounds, HeightBounds), 
+            EntityType.Enemy, true, EnemySpeed, Direction.Right, EnemyMaxHealth, EnemyDamage)
         {
-            super(new BordersImpl(position.getX(), position.getY(), WIDTH_BOUNDS, HEIGHT_BOUNDS), EntityType.ENEMY, true,
-                    Direction.RIGHT, DAMAGE, MAX_HEALTH, SPEED, DEFENSE);
         }
 
-        /**
-         * {@inheritDoc}
-         *
-         * @return the status
-         */
+        
         public Status getStatus()
         {
             return status;
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-    public double getAttackRange()
-        {
-            return ATTACK_RANGE;
         }
 
 
@@ -62,86 +45,90 @@ namespace AKnightsTale.Leonardo_Viola.Model
          *
          * @param playerPosition is the player's position in the game world.
          */
-        public void update(final Point2D playerPosition)
+        public void Update(Point<double> playerPosition)
         {
             Direction dir = null;
 
-            final double distanceY = this.getPosition().getY() - playerPosition.getY();
-            final double distanceX = this.getPosition().getX() - playerPosition.getX();
-            if (playerPosition.equals(this.getPosition()))
+            readonly double distanceY = this.getPosition().getY() - playerPosition.getY();
+            readonly double distanceX = this.getPosition().getX() - playerPosition.getX();
+            if (playerPosition.Equals(this.getPosition()))
             {
                 this.status = Status.IDLE;
             }
             else
             {
                 this.status = Status.WALK;
-                if (Math.abs(distanceX) < CHASING_RANGE && Math.abs(distanceY) < CHASING_RANGE)
+                if (Math.Abs(distanceX) < CHASING_RANGE && Math.Abs(distanceY) < CHASING_RANGE)
                 {
-                    if (this.checkAxisX)
+                    if (checkX)
                     {
-                        this.checkAxisX = false;
-                        dir = this.checkAxisX(distanceX);
+                        checkX = false;
+                        dir = CheckAxisX(distanceX);
                     }
                     else
                     {
-                        this.checkAxisX = true;
-                        dir = this.checkAxisY(distanceY);
+                        checkX = true;
+                        dir = this.CheckAxisY(distanceY);
                     }
                 }
                 if (dir == null)
                 {
-                    dir = this.getRandomDirection();
+                    dir = this.GetRandomDirection();
                 }
                 setDirection(dir);
             }
         }
 
-        private Direction checkAxisY(final double distanceY)
+        private Direction CheckAxisY(double distanceY)
         {
-            if (distanceY <= CHASING_RANGE && distanceY >= MIN_DISTANCE)
+            if (distanceY <= CHASING_RANGE && distanceY >= MinDistance)
             {
-                return Direction.UP;
+                return Direction.Up;
             }
-            else if (distanceY >= -CHASING_RANGE && distanceY <= MIN_DISTANCE)
+            else if (distanceY >= -CHASING_RANGE && distanceY <= MinDistance)
             {
-                return Direction.DOWN;
+                return Direction.Down;
             }
             return null;
         }
 
-        private Direction checkAxisX(final double distanceX)
+        private Direction CheckAxisX(double distanceX)
         {
-            if (distanceX <= CHASING_RANGE && distanceX >= MIN_DISTANCE)
+            if (distanceX <= CHASING_RANGE && distanceX >= MinDistance)
             {
-                return Direction.LEFT;
+                return Direction.Left;
             }
-            else if (distanceX >= -CHASING_RANGE && distanceX <= MIN_DISTANCE)
+            else if (distanceX >= -CHASING_RANGE && distanceX <= MinDistance)
             {
-                return Direction.RIGHT;
+                return Direction.Right;
             }
             return null;
         }
 
-        private Direction getRandomDirection()
+        private Direction GetRandomDirection()
         {
-            final int randomDirection = RANDOM.nextInt(4);
+            readonly int randomDirection = rand.NextInt64(4);
 
             switch (randomDirection)
             {
                 case 1:
-                    goLeft();
-                    return Direction.LEFT;
+                    base.GoLeft();
+                    return Direction.Left;
                 case 2:
-                    goRight();
-                    return Direction.RIGHT;
+                    base.GoRight();
+                    return Direction.Right;
                 case 3:
-                    goUp();
-                    return Direction.UP;
+                    base.GoUp();
+                    return Direction.Up;
                 default:
-                    goDown();
-                    return Direction.DOWN;
+                    base.GoDown();
+                    return Direction.Down;
             }
         }
 
+        public override double GetAttackRange()
+        {
+            return AttackRange;
+        }
     }
 }
