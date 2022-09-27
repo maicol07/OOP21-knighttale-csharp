@@ -12,14 +12,11 @@ namespace AKnightsTale.MaicolBattistini.Tests.Models
     [TestFixture]
     public class Scoreboard
     {
-        private static readonly Dictionary<string, int> Scores = new()
+        private static readonly IDictionary<string, int> Scores = new Dictionary<string, int>()
         {
             ["player1"] = 1,
            ["player2"] = 2,
            ["player3"] = 3
-            // {"player1", 1},
-            // {"player2", 2},
-            // {"player3", 3}
         };
 
         /// <summary>
@@ -74,6 +71,7 @@ namespace AKnightsTale.MaicolBattistini.Tests.Models
         /// <summary>
         /// Checks that deleting a score from the scoreboard works.
         /// </summary>
+        [Test]
         public void DeleteScore()
         {
             var scoreboard = GetSampleScoreboard();
@@ -98,7 +96,6 @@ namespace AKnightsTale.MaicolBattistini.Tests.Models
         /// <returns>A sample scoreboard</returns>
         private static IScoreboard GetSampleScoreboard() {
             var scoreboard = new MaicolBattistini.Models.Scoreboard();
-            Console.WriteLine(Scores);
             foreach (var (name, score) in Scores) {
                 scoreboard.SetScore(name, score);
             }

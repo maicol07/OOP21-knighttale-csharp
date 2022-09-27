@@ -12,7 +12,7 @@ namespace AKnightsTale.MaicolBattistini.Controllers
         /// Get scoreboard entries
         /// </summary>
         /// <returns>Scoreboard entries</returns>
-        ImmutableHashSet<KeyValuePair<string, int>> GetScoreboard();
+        IEnumerable<KeyValuePair<string, int>> GetScoreboard();
         /// <summary>
         /// Returns to main menu
         /// </summary>

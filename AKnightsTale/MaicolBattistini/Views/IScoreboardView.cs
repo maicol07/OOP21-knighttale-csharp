@@ -12,6 +12,6 @@ namespace AKnightsTale.MaicolBattistini.Views
         /// Updates the scoreboard.
         /// </summary>
         /// <param name="scoreboard">Updated scoreboard entries</param>
-        void UpdateScoreboard(ImmutableHashSet<KeyValuePair<string, int>> scoreboard);
+        void UpdateScoreboard(IEnumerable<KeyValuePair<string, int>> scoreboard);
     }
 }

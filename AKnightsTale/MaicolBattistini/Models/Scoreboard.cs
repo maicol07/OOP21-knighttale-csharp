@@ -8,11 +8,11 @@ namespace AKnightsTale.MaicolBattistini.Models
     public class Scoreboard: IScoreboard
     {
         private const string ScoreboardFileName = "scoreboard.json";
-        private Dictionary<string, int> _scores = new();
+        private IDictionary<string, int> _scores = new Dictionary<string, int>();
     
     
         /// <inheritdoc cref="IScoreboard.GetEntries"/>
-        public ImmutableHashSet<KeyValuePair<string, int>> GetEntries()
+        public IEnumerable<KeyValuePair<string, int>> GetEntries()
         {
             return _scores.ToImmutableHashSet();
         }
@@ -58,7 +58,7 @@ namespace AKnightsTale.MaicolBattistini.Models
             }
 
             
-            var scoreboard = JsonConvert.DeserializeObject<Dictionary<string, int>>(json);
+            var scoreboard = JsonConvert.DeserializeObject<IDictionary<string, int>>(json);
             if (scoreboard != null)
             {
                 _scores = scoreboard;
