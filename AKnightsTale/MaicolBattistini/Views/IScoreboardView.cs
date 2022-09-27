@@ -1,5 +1,4 @@
-﻿using System.Collections.Immutable;
-using AKnightsTale.MaicolBattistini.Controllers;
+﻿using AKnightsTale.MaicolBattistini.Controllers;
 
 namespace AKnightsTale.MaicolBattistini.Views
 {

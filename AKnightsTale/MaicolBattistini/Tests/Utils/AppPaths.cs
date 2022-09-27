@@ -1,5 +1,4 @@
-﻿using AKnightsTale.MaicolBattistini.utils;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using FluentAssertions;
 
 namespace AKnightsTale.MaicolBattistini.Tests.Utils
