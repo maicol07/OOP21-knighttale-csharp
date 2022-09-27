@@ -10,7 +10,7 @@ namespace AKnightsTale.MaicolBattistini.Models
   /// Get scoreboard values
   /// </summary>
   /// <returns>The scoreboard values (name and score)</returns>
-  ImmutableHashSet<KeyValuePair<string, int>> GetEntries();
+  IEnumerable<KeyValuePair<string, int>> GetEntries();
 
 
   /// <summary>
