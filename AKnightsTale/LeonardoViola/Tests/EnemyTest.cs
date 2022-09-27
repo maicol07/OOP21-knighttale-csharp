@@ -20,7 +20,7 @@ namespace AKnightsTale.LeonardoViola.Tests
         [Test]
         public void CheckType() {
             var enemy = GetEnemy();
-            enemy.GetPosition().Should().Be(EntityType.Enemy);
+            enemy.Type.Should().Be(EntityType.Enemy);
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace AKnightsTale.LeonardoViola.Tests
             var position = enemy.GetPosition();
             enemy.GoLeft();
             position = new Point<double>(position.X - enemy.Speed, position.Y);
-            position.Should().Be(enemy.GetPosition());
+            position.Should().BeEquivalentTo(enemy.GetPosition());
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace AKnightsTale.LeonardoViola.Tests
             var position = enemy.GetPosition();
             enemy.GoUp();
             position = new Point<double>(position.X, position.Y - enemy.Speed);
-            position.Should().Be(enemy.GetPosition());
+            position.Should().BeEquivalentTo(enemy.GetPosition());
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace AKnightsTale.LeonardoViola.Tests
         public void CheckPosition()
         {
             var enemy = GetEnemy();
-            enemy.GetPosition().Should().Be(new Point<double>(10, 10));
+            enemy.GetPosition().Should().BeEquivalentTo(new Point<double>(SampleCoordinate, SampleCoordinate));
         }
 
         /// <summary>
