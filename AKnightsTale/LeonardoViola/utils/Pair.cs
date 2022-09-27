@@ -1,5 +1,8 @@
-﻿namespace AKnightsTale.LeonardoViola.utils
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace AKnightsTale.LeonardoViola.utils
 {
+    [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Local")]
     public class Pair <TK, TV>
     {
         public Pair(TK k, TV v)
