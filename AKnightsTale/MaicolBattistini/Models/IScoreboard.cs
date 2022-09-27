@@ -1,6 +1,4 @@
-﻿using System.Collections.Immutable;
-
-namespace AKnightsTale.MaicolBattistini.Models
+﻿namespace AKnightsTale.MaicolBattistini.Models
 {
  /// <summary>
  /// The scoreboard model
