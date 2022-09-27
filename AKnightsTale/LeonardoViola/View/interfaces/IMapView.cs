@@ -1,17 +1,35 @@
-﻿using AKnightsTale.Leonardo_Viola.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AKnightsTale.Leonardo_Viola.Controller.interfaces;
+﻿using AKnightsTale.LeonardoViola.Controller.interfaces;
+using AKnightsTale.MaicolBattistini.Views;
 
-namespace AKnightsTale.Leonardo_Viola.View.interfaces
+namespace AKnightsTale.LeonardoViola.View.interfaces
 {
-    internal interface IMapView : View<IMapController>
+    internal interface IMapView : IView<IMapController, IMapView>
     {
         
         /// <summary>
+        /// The tile's Height
+        /// </summary>
+        double TileHeight { get; }
+        
+        /// <summary>
+        /// The tile's Width
+        /// </summary>
+        double TileWidth { get; }
+        
+        /// <summary>
+        /// Gets tiles.
+        /// </summary>
+        /// <returns>a list that contains all the tiles used in the map</returns>
+        List<ITile> Tiles { get; }
+        
+        /*/// <summary>
+        /// Gets tiles.
+        /// </summary>
+        /// <returns>a list that contains all the tiles used in the map</returns>
+        List<ITile> GetTiles();*/
+        
+        
+        /*/// <summary>
         /// Gets tile width.
         /// </summary>
         /// <returns>the tile width</returns>
@@ -21,7 +39,7 @@ namespace AKnightsTale.Leonardo_Viola.View.interfaces
         /// Gets tile height.
         /// </summary>
         /// <returns>the tile height</returns>
-        double GetTileHeight();
+        double GetTileHeight();*/
         
         /// <summary>
         /// Gets screen width.
@@ -49,12 +67,6 @@ namespace AKnightsTale.Leonardo_Viola.View.interfaces
         ITile GetTree();
 
         /// <summary>
-        /// Gets tiles.
-        /// </summary>
-        /// <returns>a list that contains all the tiles used in the map</returns>
-        List<ITile> GetTiles();
-        
-        /// <summary>
         /// Delete all the tiles and entities present in the game world.
         /// </summary>
         void ClearMap();
@@ -62,9 +74,10 @@ namespace AKnightsTale.Leonardo_Viola.View.interfaces
         /// <summary>
         /// Draw tiles or entities in the game world.
         /// </summary>
+        /// <param name="tile">The tile to draw</param>
         /// <param name="x">The x coordinate where to draw</param>
         /// <param name="y">The y coordinate where to draw</param>
-        void Draw(EntityView tile, double x, double y);
+        void Draw(IEntityView tile, double x, double y);
 
         /// <summary>
         /// Resize the size of all tiles of the game world.
@@ -82,6 +95,5 @@ namespace AKnightsTale.Leonardo_Viola.View.interfaces
         /// Stop the game when it's finished.
         /// </summary>
         void StopGame();
-        
     }
 }

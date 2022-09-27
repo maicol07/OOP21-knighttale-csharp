@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AKnightsTale.LeonardoViola.utils;
 using AKnightsTale.SimoneRedighieri.model;
 using AKnightsTale.SimoneRedighieri.utils;
+using Direction = AKnightsTale.SimoneRedighieri.model.Direction;
 
-namespace AKnightsTale.Leonardo_Viola.Model
+namespace AKnightsTale.LeonardoViola.Model
 {
     internal class Enemy : BaseCharacter
     {
@@ -22,92 +19,81 @@ namespace AKnightsTale.Leonardo_Viola.Model
         /**
          * The Chasing range.
          */
-        private const double CHASING_RANGE = 100;
-        private Status status  = Status.WALK;
+        private const double ChasingRange = 100;
 
-        private const Random rand = new Random();
-        private bool checkX = rand.NextInt64() % 2 == 0;
+        public Status Status { get; set; } = Status.Walk; 
+
+        private static readonly Random Rand = new Random();
+        private bool _checkX = Rand.Next() % 2 == 0;
         
         public Enemy(Point<double> position) : base(new Borders(position.X, position.Y, WidthBounds, HeightBounds), 
-            EntityType.Enemy, true, EnemySpeed, Direction.Right, EnemyMaxHealth, EnemyDamage)
+            EntityType.Enemy, true, EnemySpeed, Direction.Right, EnemyMaxHealth, EnemyDamage, EnemyDefense)
         {
         }
 
-        
-        public Status getStatus()
-        {
-            return status;
-        }
-
-
-        /**
-         * This method set the new enemy's direction.
-         *
-         * @param playerPosition is the player's position in the game world.
-         */
         public void Update(Point<double> playerPosition)
         {
-            Direction dir = null;
+            Direction dir = default;
 
-            readonly double distanceY = this.getPosition().getY() - playerPosition.getY();
-            readonly double distanceX = this.getPosition().getX() - playerPosition.getX();
-            if (playerPosition.Equals(this.getPosition()))
+            double distanceY = GetPosition().Y - playerPosition.Y;
+            double distanceX = GetPosition().X - playerPosition.X;
+            if (playerPosition.Equals(GetPosition()))
             {
-                this.status = Status.IDLE;
+                this.Status = Status.Idle;
             }
             else
             {
-                this.status = Status.WALK;
-                if (Math.Abs(distanceX) < CHASING_RANGE && Math.Abs(distanceY) < CHASING_RANGE)
+                this.Status = Status.Walk;
+                if (Math.Abs(distanceX) < ChasingRange && Math.Abs(distanceY) < ChasingRange)
                 {
-                    if (checkX)
+                    if (_checkX)
                     {
-                        checkX = false;
+                        _checkX = false;
                         dir = CheckAxisX(distanceX);
                     }
                     else
                     {
-                        checkX = true;
+                        _checkX = true;
                         dir = this.CheckAxisY(distanceY);
                     }
                 }
-                if (dir == null)
+                if (dir == default)
                 {
                     dir = this.GetRandomDirection();
                 }
-                setDirection(dir);
+                Direction = dir;
             }
         }
 
         private Direction CheckAxisY(double distanceY)
         {
-            if (distanceY <= CHASING_RANGE && distanceY >= MinDistance)
+            if (distanceY <= ChasingRange && distanceY >= MinDistance)
             {
                 return Direction.Up;
             }
-            else if (distanceY >= -CHASING_RANGE && distanceY <= MinDistance)
+            else if (distanceY >= -ChasingRange && distanceY <= MinDistance)
             {
                 return Direction.Down;
             }
-            return null;
+            return default;
         }
 
         private Direction CheckAxisX(double distanceX)
         {
-            if (distanceX <= CHASING_RANGE && distanceX >= MinDistance)
+            if (distanceX <= ChasingRange && distanceX >= MinDistance)
             {
                 return Direction.Left;
             }
-            else if (distanceX >= -CHASING_RANGE && distanceX <= MinDistance)
+            else if (distanceX >= -ChasingRange && distanceX <= MinDistance)
             {
                 return Direction.Right;
             }
-            return null;
+            return default;
         }
 
         private Direction GetRandomDirection()
         {
-            readonly int randomDirection = rand.NextInt64(4);
+            int randomDirection = Rand.Next(4);
 
             switch (randomDirection)
             {
