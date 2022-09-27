@@ -98,16 +98,16 @@ namespace AKnightsTale.LeonardoViola.Model
             switch (randomDirection)
             {
                 case 1:
-                    base.GoLeft();
+                    GoLeft();
                     return Direction.Left;
                 case 2:
-                    base.GoRight();
+                    GoRight();
                     return Direction.Right;
                 case 3:
-                    base.GoUp();
+                    GoUp();
                     return Direction.Up;
                 default:
-                    base.GoDown();
+                    GoDown();
                     return Direction.Down;
             }
         }
