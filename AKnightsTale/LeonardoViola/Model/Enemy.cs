@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AKnightsTale.Leonardo_Viola.utils;
+﻿using AKnightsTale.LeonardoViola.utils;
 using AKnightsTale.SimoneRedighieri.model;
 using AKnightsTale.SimoneRedighieri.utils;
 using Direction = AKnightsTale.SimoneRedighieri.model.Direction;
 
-namespace AKnightsTale.Leonardo_Viola.Model
+namespace AKnightsTale.LeonardoViola.Model
 {
     internal class Enemy : BaseCharacter
     {

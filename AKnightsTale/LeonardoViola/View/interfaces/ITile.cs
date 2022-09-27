@@ -1,11 +1,6 @@
 ﻿using AKnightsTale.SimoneRedighieri.model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AKnightsTale.Leonardo_Viola.View.interfaces
+namespace AKnightsTale.LeonardoViola.View.interfaces
 {
     internal interface ITile : IAnimatedEntityView
     {

@@ -1,14 +1,7 @@
-﻿using AKnightsTale.Leonardo_Viola.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AKnightsTale.Leonardo_Viola.Controller.interfaces;
-using AKnightsTale.MaicolBattistini.Controllers;
+﻿using AKnightsTale.LeonardoViola.Controller.interfaces;
 using AKnightsTale.MaicolBattistini.Views;
 
-namespace AKnightsTale.Leonardo_Viola.View.interfaces
+namespace AKnightsTale.LeonardoViola.View.interfaces
 {
     internal interface IMapView : IView<IMapController, IMapView>
     {

@@ -1,13 +1,14 @@
-﻿namespace AKnightsTale.Leonardo_Viola.View.interfaces;
-
-public interface IEntityView
+﻿namespace AKnightsTale.LeonardoViola.View.interfaces
 {
-    /*
-     Impossible to convert because Image doesn't exist in c#
-    ///<summary>
-    /// Gets the entity image.
-    /// </summary>
-    /// <returns>the entity image.</returns>
-    Image Image { get; }
-    */
+    public interface IEntityView
+    {
+        /*
+         Impossible to convert because Image doesn't exist in c#
+        ///<summary>
+        /// Gets the entity image.
+        /// </summary>
+        /// <returns>the entity image.</returns>
+        Image Image { get; }
+        */
+    }
 }

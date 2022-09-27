@@ -1,8 +1,9 @@
-﻿namespace AKnightsTale.Leonardo_Viola.utils;
-
-public enum Status
+﻿namespace AKnightsTale.LeonardoViola.utils
 {
-    Idle,
-    Walk,
-    Attack
+    public enum Status
+    {
+        Idle,
+        Walk,
+        Attack
+    }
 }

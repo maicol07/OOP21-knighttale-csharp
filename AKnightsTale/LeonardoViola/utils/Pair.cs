@@ -1,13 +1,14 @@
-﻿namespace AKnightsTale.Leonardo_Viola.utils;
-
-public class Pair <TK, TV>
+﻿namespace AKnightsTale.LeonardoViola.utils
 {
-    public Pair(TK k, TV v)
+    public class Pair <TK, TV>
     {
-        K = k;
-        V = v;
-    }
+        public Pair(TK k, TV v)
+        {
+            K = k;
+            V = v;
+        }
 
-    private TK K { get; set; }
-    private TV V { get; set; }
+        private TK K { get; set; }
+        private TV V { get; set; }
+    }
 }

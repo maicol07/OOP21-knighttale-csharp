@@ -1,11 +1,12 @@
-﻿using AKnightsTale.Leonardo_Viola.utils;
+﻿using AKnightsTale.LeonardoViola.utils;
 
-namespace AKnightsTale.Leonardo_Viola.Model;
-
-public interface ISpawner
+namespace AKnightsTale.LeonardoViola.Model
 {
-    ///<summary>
-    /// the updated map
-    /// </summary>
-    IDictionary<Pair<int, int>, int> Map { get; }
+    public interface ISpawner
+    {
+        ///<summary>
+        /// the updated map
+        /// </summary>
+        IDictionary<Pair<int, int>, int> Map { get; }
+    }
 }

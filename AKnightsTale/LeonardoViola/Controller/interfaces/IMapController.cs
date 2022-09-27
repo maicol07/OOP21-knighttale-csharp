@@ -1,13 +1,8 @@
-﻿using AKnightsTale.SimoneRedighieri.model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AKnightsTale.Leonardo_Viola.View.interfaces;
+﻿using AKnightsTale.LeonardoViola.View.interfaces;
 using AKnightsTale.MaicolBattistini.Controllers;
+using AKnightsTale.SimoneRedighieri.model;
 
-namespace AKnightsTale.Leonardo_Viola.Controller.interfaces
+namespace AKnightsTale.LeonardoViola.Controller.interfaces
 {
     internal interface IMapController : IController<IMapController, IMapView>
     {
